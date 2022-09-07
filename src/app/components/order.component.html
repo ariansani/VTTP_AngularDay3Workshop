@@ -1,0 +1,54 @@
+<form [formGroup]="form" (ngSubmit)="processForm()">
+    <div>
+        <label for=""> Name: </label>
+  
+        <input type="text" id="name" size="30" formControlName="name" />
+      </div>
+      <div>
+        <label for=""> Mobile: </label>
+        <input
+          type="number"
+          id="mobile"
+          formControlName="mobile"
+        />
+      </div>
+  
+     
+  
+        <button type="button" (click)="processForm()" [disabled]="form.invalid">Save</button>
+      
+  
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>  <button type="button" style="margin-left: 10px" (click)="addItem()">
+              Add
+            </button></th>
+          </tr>
+        </thead>
+        <tbody formArrayName="orders">
+          <tr *ngFor="let t of ordersArrayCtrl.controls; let i = index" [formGroup]="t">
+            <td>
+              <input formControlName="item" />
+            </td>
+            <td>
+              <select formControlName="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" (click)="removeOrder(i)">X</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+</form>

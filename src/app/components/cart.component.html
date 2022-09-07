@@ -1,0 +1,15 @@
+<table>
+    <tr>
+      <th>Order ID</th>
+      <th>Name</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let order of orders;">
+        <td>{{ order.uuid }}</td>
+      <td>{{ order.name }}</td>
+      <td><button (click)="delete(order.uuid)">X</button></td> 
+  
+    </tr>
+  </table>
+  
+  
